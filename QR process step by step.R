@@ -31,3 +31,5 @@ QR <- function(X,y){
 
 QR(X,y)
 
+#instead of QR we multiply by the identity matrix 
+
