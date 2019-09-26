@@ -8,10 +8,10 @@ QR <- function(X,y){
   X <- as.matrix(iris[-ncol(iris)])
   
   # vector of ones with same length as rows in Iris
-  int <- rep(1, length(y))
+  I <- rep(1, length(y))
   
   # Add intercept column to X
-  X <- cbind(int, X)
+  X <- cbind(I, X)
   n_col <- as.integer(ncol(X))
   
   n_row <- as.integer(nrow(X))
