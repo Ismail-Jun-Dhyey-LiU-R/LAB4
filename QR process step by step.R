@@ -1,42 +1,46 @@
 
 library(iris)
 QR <- function(X,y){
-  # Create response vector y
+  
   y <- iris$Sepal.Length
   
-  # Matrix of feature variables from Iris
+
   X <- as.matrix(iris[-ncol(iris)])
   
-  # vector of ones with same length as rows in Iris
+
   I <- rep(1, length(y))
   
-  # Add intercept column to X
+  
   X <- cbind(I, X)
-  n_col <- as.integer(ncol(X))
-  
-  n_row <- as.integer(nrow(X))
-  # Implement closed-form solution
+ 
+#Regression Coefficient 
   betas <- solve(t(X) %*% X) %*% t(X) %*% y
-  
-  # Round for easier viewing
   betas <- round(betas, 2)
-  betas
   
-  e <- as.vector(y - X %*% betas)
-  e
-  R2 <- (X[1:n_col, 1:n_col])^2
-  R2
-  
+#The fitted value
   Yhat <- X %*% betas
-  # degrees of freedom 
+  
+#The residuals  
+  e <- as.vector(y - X %*% betas)
+  
+#degrees of freedom 
   n <- length(y)
   p <- (length(all.vars(formula))-1)
   df <- n - p
   
+#Residual variance 
+ R = t(e)%*%(e/df)
+ 
+# The variance of the regression coefficients:
+ varbeta <- R * solve(t(X) %*% X)
+ 
+#The t-values for each coefficient:
+ 
+ t_value <- betas/(sqrt(varbeta))
   
   
   
-  return(list(betas = betas, e= e, R2 = R2, fittedV = Yhat, DegreesFreedom = df ))
+  return(list(betas = betas, e= e, R2 = R2, fittedV = Yhat, DegreesFreedom = df,ResidualVarinace= R, TheVarianceOfTheregressionCoefficients = varbeta , t_value = tvalue ))
 }
 
 QR(X,y)
