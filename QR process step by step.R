@@ -26,7 +26,17 @@ QR <- function(X,y){
   e
   R2 <- (X[1:n_col, 1:n_col])^2
   R2
-  return(list(betas = betas, e= e, R2 = R2 ))
+  
+  Yhat <- X %*% betas
+  # degrees of freedom 
+  n <- length(y)
+  p <- (length(all.vars(formula))-1)
+  df <- n - p
+  
+  
+  
+  
+  return(list(betas = betas, e= e, R2 = R2, fittedV = Yhat, DegreesFreedom = df ))
 }
 
 QR(X,y)
