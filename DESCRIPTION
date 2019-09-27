@@ -3,7 +3,7 @@ Type: Package
 Title: What the package does (short line)
 Version: 1.0
 Date: 2019-09-23
-Author: Who wrote it
+Author: <Jun Li> <Ismail Khalil> <Dhyey Patel>
 Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
+Description: Linear regression is a prediction method. Simple linear regression is a great first machine learning algorithm to implement as it requires you to estimate properties from your training dataset, but is simple enough for beginners to understand.
 License: GPL-3
